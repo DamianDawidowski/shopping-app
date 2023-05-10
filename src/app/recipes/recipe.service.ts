@@ -22,7 +22,13 @@ export class RecipeService {
       [new Ingredient('wiener', 1), new Ingredient('bun', 1)]
     ),
   ];
+  // private recipes: Recipe[] = [];
   constructor(private slService: ShoppingListService) {}
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
 
   getRecipes() {
     return this.recipes.slice();
